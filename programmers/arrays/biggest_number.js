@@ -22,12 +22,42 @@
 
  */
 
+function solution(numbers){
+    let array = []
 
-function solution(){
+    // let idx = 0
+    const length = numbers.length
+    // numbers.map((value, idx) => {
+    //     let num = [];
+    //     for (let count = 0; count < length; count++){
+    //         num.push(numbers[count-idx]);
+    //     }
+    //     return array.push(num.join(''))
+    // })
 
+    for (value of numbers){
+
+    }
+
+        //0,1,2,3
+        //1,2,3,0
+        //2,3,0,1
+        //3,0,1,2
+    //
+    // array.push(numbers[0].toString() + numbers[1].toString() + numbers[2].toString())
+    // array.push(numbers[1].toString() + numbers[2].toString() + numbers[0].toString())
+    // array.push(numbers[2].toString() + numbers[0].toString() + numbers[1].toString())
+
+
+    // num = [6102, 6210, 1062, 1026, 2610, 2106]
+    // sort > num(0);
+
+    return array;
 }
 
 
-console.time('solution');
-console.log(solution(array, commands));
-console.timeEnd("solution");
+const numbers = [6,10,2]
+// console.log(contents.indexOf(content));
+// console.time('solution');
+// console.log(solution(numbers));
+// console.timeEnd("solution");
