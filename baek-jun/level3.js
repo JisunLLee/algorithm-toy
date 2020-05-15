@@ -115,7 +115,7 @@ function Num3() {
 
 function Num4() {
     /**
-     * 빠른 A + B
+     * 빠른 A + B (15552번)
 
      문제
      본격적으로 for문 문제를 풀기 전에 주의해야 할 점이 있다. 입출력 방식이 느리면 여러 줄을 입력받거나 출력할 때 시간초과가 날 수 있다는 점이다.
@@ -179,7 +179,7 @@ function Num4() {
 
 function Num5() {
     /**
-     * N 찍기
+     * N 찍기 (2741번)
 
      문제
      자연수 N이 주어졌을 때, 1부터 N까지 한 줄에 하나씩 출력하는 프로그램을 작성하시오.
@@ -209,20 +209,33 @@ function Num5() {
 
 function Num6() {
     /**
-     * A×B
+     * 기찍 N (2742번)
+
+     문제
+     자연수 N이 주어졌을 때, N부터 1까지 한 줄에 하나씩 출력하는 프로그램을 작성하시오.
+
+     입력
+     첫째 줄에 100,000보다 작거나 같은 자연수 N이 주어진다.
+
+     출력
+     첫째 줄부터 N번째 줄 까지 차례대로 출력한다.
 
      예제
-     input
-     return
+     input 5
+     return 5 4 3 2 1
      * */
 
     const fs = require('fs');
-    const input = fs.readFileSync('/dev/stdin').toString().split(' ');
-    const A = parseInt(input[0]);
-    const B = parseInt(input[1]);
+    let input = Number(fs.readFileSync('/dev/stdin'));
 
-    console.log(A * B);
+    let answer = '';
+    for (input; input >0; input--) {
+        answer += input + "\n";
+    }
+
+    console.log(answer);
 }
+// Num6(8);
 
 function Num7() {
     /**
