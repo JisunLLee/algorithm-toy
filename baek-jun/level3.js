@@ -3,6 +3,12 @@
  * 총 11문제.
  */
 
+module.exports = {
+    testMocha: function () {
+        console.log("testMocha CALLED!")
+        return "TEST!";
+    }
+}
 
 function Num1() {
     /**
@@ -39,7 +45,6 @@ function Num1() {
         console.log(input,"*",i,"=",input * i)
     }
 }
-
 
 function Num2() {
     /**
@@ -176,7 +181,6 @@ function Num4() {
 }
 // Num4(["5", "1 1", "12 34", "5 500", "40 60" ,"1000 1000"])
 
-
 function Num5() {
     /**
      * N 찍기 (2741번)
@@ -275,71 +279,164 @@ function Num7() {
         console.log(`Case #${i}: ${Number(values[0]) +Number(values[1])}`)
     }
 }
-Num7([ "5",    "1 1",    "2 3",    "3 4",    "9 8",    "5 2"])
+// Num7([ "5",    "1 1",    "2 3",    "3 4",    "9 8",    "5 2"])
+
 function Num8() {
     /**
-     * A×B
+     * A+B - 8 (11022번)
+
+     문제
+     두 정수 A와 B를 입력받은 다음, A+B를 출력하는 프로그램을 작성하시오.
+
+     입력
+     첫째 줄에 테스트 케이스의 개수 T가 주어진다.
+
+     각 테스트 케이스는 한 줄로 이루어져 있으며, 각 줄에 A와 B가 주어진다. (0 < A, B < 10)
+
+     출력
+     각 테스트 케이스마다 "Case #x: A + B = C" 형식으로 출력한다. x는 테스트 케이스 번호이고 1부터 시작하며, C는 A+B이다.
 
      예제
      input
+     5
+     1 1
+     2 3
+     3 4
+     9 8
+     5 2
+
      return
+     Case #1: 1 + 1 = 2
+     Case #2: 2 + 3 = 5
+     Case #3: 3 + 4 = 7
+     Case #4: 9 + 8 = 17
+     Case #5: 5 + 2 = 7
      * */
 
-    const fs = require('fs');
-    const input = fs.readFileSync('/dev/stdin').toString().split(' ');
-    const A = parseInt(input[0]);
-    const B = parseInt(input[1]);
-
-    console.log(A * B);
+    const input = require('fs').readFileSync('/dev/stdin').toString().split('\n');
+    for (let i = 1; i <= Number(input[0]); i ++){
+        const value = input[i].split(' ');
+        console.log(`Case #${i}: ${value[0]} + ${value[1]} = ${Number(value[0])+Number(value[1])}`)
+    }
 }
+// Num8(["5", "1 1", "2 3", "3 4", "9 8", "5 2"])
+
 
 function Num9() {
     /**
-     * A×B
+     * 별 찍기 - 1 (2438번)
+
+     문제
+     첫째 줄에는 별 1개, 둘째 줄에는 별 2개, N번째 줄에는 별 N개를 찍는 문제
+
+     입력
+     첫째 줄에 N(1 ≤ N ≤ 100)이 주어진다.
+
+     출력
+     첫째 줄부터 N번째 줄까지 차례대로 별을 출력한다.
 
      예제
-     input
+     input 5
      return
+     *
+     **
+     ***
+     ****
+     *****
      * */
 
-    const fs = require('fs');
-    const input = fs.readFileSync('/dev/stdin').toString().split(' ');
-    const A = parseInt(input[0]);
-    const B = parseInt(input[1]);
+    // const input = parseInt(require('fs').readFileSync('/dev/stdin'));
 
-    console.log(A * B);
+    for (let i = 0; i < input; i++){
+        let j = 0;
+        let star = "";
+        do {
+            star += "*"
+            j++
+        }
+        while (j <= i)
+        console.log(star)
+    }
 }
+// Num9(5)
 
 function Num10() {
     /**
-     * A×B
+     * 별 찍기 - 2 (2439번)
+
+     문제
+     첫째 줄에는 별 1개, 둘째 줄에는 별 2개, N번째 줄에는 별 N개를 찍는 문제
+
+     하지만, 오른쪽을 기준으로 정렬한 별(예제 참고)을 출력하시오.
+
+     입력
+     첫째 줄에 N(1 ≤ N ≤ 100)이 주어진다.
+
+     출력
+     첫째 줄부터 N번째 줄까지 차례대로 별을 출력한다.
 
      예제
-     input
+     input 5
      return
+         *
+        **
+       ***
+      ****
+     *****
      * */
 
-    const fs = require('fs');
-    const input = fs.readFileSync('/dev/stdin').toString().split(' ');
-    const A = parseInt(input[0]);
-    const B = parseInt(input[1]);
+    // 출력 형식이 잘못되었습니다 주의. <- * 앞에 띄어쓰기 주의
+    const input = parseInt(require('fs').readFileSync('/dev/stdin'));
+    let star = '';
+    for (let i = 0; i < input; i++){
+        for (let j = 1; j < input-i; j ++){
+            star += " ";
+        }
 
-    console.log(A * B);
+        for (let k = 0; k <= i; k ++) {
+            star += "*"
+        }
+        star += '\n'
+    }
+    console.log(star);
 }
+// Num10(5)
 
 function Num11() {
     /**
-     * A×B
+     * X보다 작은 수 (10871번)
+
+     문제
+     정수 N개로 이루어진 수열 A와 정수 X가 주어진다. 이때, A에서 X보다 작은 수를 모두 출력하는 프로그램을 작성하시오.
+
+     입력
+     첫째 줄에 N과 X가 주어진다. (1 ≤ N, X ≤ 10,000)
+
+     둘째 줄에 수열 A를 이루는 정수 N개가 주어진다. 주어지는 정수는 모두 1보다 크거나 같고, 10,000보다 작거나 같은 정수이다.
+
+     출력
+     X보다 작은 수를 입력받은 순서대로 공백으로 구분해 출력한다. X보다 작은 수는 적어도 하나 존재한다.
 
      예제
      input
+     10 5
+     1 10 4 9 2 3 8 5 7 6
      return
+     1 4 2 3
      * */
 
-    const fs = require('fs');
-    const input = fs.readFileSync('/dev/stdin').toString().split(' ');
-    const A = parseInt(input[0]);
-    const B = parseInt(input[1]);
+    const input = require('fs').readFileSync('/dev/stdin').toString().split('\n');
 
-    console.log(A * B);
+    const firstClue = input[0].split(' ')
+    const secondClue = input[1].split(' ')
+    const X = Number(firstClue[1])
+
+    let result = []
+    secondClue.forEach(value => {
+        if (Number(value) < X) result.push(value)
+    })
+
+    console.log(result.join(' '));
 }
+
+Num11(["10 5", "1 10 4 9 2 3 8 5 7 6"])
