@@ -1,2 +1,4 @@
 .idea
-test.js
+node_modules
+test_app.js
+package-lock.json
