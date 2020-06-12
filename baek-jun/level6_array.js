@@ -86,6 +86,104 @@ function Que2 (input) {
     console.log(idx)
 }
 
+function Que3 (input) {
+    /**
+     * 	숫자의 개수 (2577번)
 
+     문제
+     세 개의 자연수 A, B, C가 주어질 때 A×B×C를 계산한 결과에 0부터 9까지 각각의 숫자가 몇 번씩 쓰였는지를 구하는 프로그램을 작성하시오.
+
+     예를 들어 A = 150, B = 266, C = 427 이라면
+     A × B × C = 150 × 266 × 427 = 17037300 이 되고,
+     계산한 결과 17037300 에는 0이 3번, 1이 1번, 3이 2번, 7이 2번 쓰였다.
+
+     입력
+     첫째 줄에 A, 둘째 줄에 B, 셋째 줄에 C가 주어진다. A, B, C는 모두 100보다 같거나 크고, 1,000보다 작은 자연수이다.
+
+     출력
+     첫째 줄에는 A×B×C의 결과에 0 이 몇 번 쓰였는지 출력한다. 마찬가지로 둘째 줄부터 열 번째 줄까지 A×B×C의 결과에 1부터 9까지의 숫자가 각각 몇 번 쓰였는지 차례로 한 줄에 하나씩 출력한다.
+
+     예제
+     input
+     150
+     266
+     427
+     return
+     3
+     1
+     0
+     2
+     0
+     0
+     0
+     2
+     0
+     0
+     * */
+
+    // const input = require('fs').readFileSync('/dev/stdin').toString().split("\n");
+    const multiple = (parseInt(input[0]) * parseInt(input[1]) * parseInt(input[2])).toString().split('').sort()
+
+    let num = 0
+    for (num; num < 10; num++){
+        let sameNum = 0;
+        multiple.map(value => {
+            if (parseInt(value) === num) sameNum++
+        })
+        console.log(sameNum)
+    }
+}
+
+function Que4 (input) {
+/**
+ * 	나머지 (3052번)
+ *
+ * 	문제
+ 두 자연수 A와 B가 있을 때, A%B는 A를 B로 나눈 나머지 이다. 예를 들어, 7, 14, 27, 38을 3으로 나눈 나머지는 1, 2, 0, 2이다.
+
+ 수 10개를 입력받은 뒤, 이를 42로 나눈 나머지를 구한다. 그 다음 서로 다른 값이 몇 개 있는지 출력하는 프로그램을 작성하시오.
+
+ 입력
+ 첫째 줄부터 열번째 줄 까지 숫자가 한 줄에 하나씩 주어진다. 이 숫자는 1,000보다 작거나 같고, 음이 아닌 정수이다.
+
+ 출력
+ 첫째 줄에, 42로 나누었을 때, 서로 다른 나머지가 몇 개 있는지 출력한다.
+
+ 예제
+ input
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 82
+ 83
+ 84
+ 85
+
+ output
+ 6
+
+ *** input 에 공백 들어옴. .trim() 해줄 것!
+ */
+
+// const input = require('fs').readFileSync('/dev/stdin').toString().trim().split("\n");
+    let remainders = []
+    input.map(value => {
+        remainders.push(parseInt(value) % 42)
+    })
+
+    //solution1
+    console.log(Array.from(new Set(remainders)).length)
+
+    //solution2
+    console.log(new Set(remainders).size)
+
+    //solution3
+    console.log(remainders.sort().filter((value, index) => value !== remainders[index+1]).length)
+}
 // Que1(['5', '20 10 35 30 7'])
-Que2([3, 29, 38, 12, 57, 74, 40, 85, 61])
+// Que2([3, 29, 38, 12, 57, 74, 40, 85, 61])
+// Que3(['150','266','427'])
+Que4(['39', '40', '41', '42', '43', '44', '82', '83', '84', '85'])
