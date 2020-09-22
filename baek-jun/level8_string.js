@@ -191,7 +191,61 @@ function Que4(input) {
 
 }
 
+function Que5(input) {
+
+    /**
+     * 단어공부 (1157번)
+
+     문제
+     알파벳 대소문자로 된 단어가 주어지면, 이 단어에서 가장 많이 사용된 알파벳이 무엇인지 알아내는 프로그램을 작성하시오. 단, 대문자와 소문자를 구분하지 않는다.
+
+     입력
+     첫째 줄에 알파벳 대소문자로 이루어진 단어가 주어진다. 주어지는 단어의 길이는 1,000,000을 넘지 않는다.
+
+     출력
+     첫째 줄에 이 단어에서 가장 많이 사용된 알파벳을 대문자로 출력한다. 단, 가장 많이 사용된 알파벳이 여러 개 존재하는 경우에는 ?를 출력한다.
+
+     예제1
+     input Mississipi
+     output ?
+
+     예제2
+     input zZa
+     output Z
+
+     예제3
+     input z
+     output Z
+
+     예제3
+     input baaa
+     output A
+     * */
+
+    //모두 대문자로 바꿔주고
+    input = input.trim().toUpperCase()
+    input = input.split("")
+
+    // 어이없음.... 인풋에 .toUpperCase().split(""); 한번에 넣어주면 런타임 에러 안뜨고
+    // input = input.trim().toUpperCase()
+    // input = input.split("") 요렇게 하면 런타임 에러 뜬다...
+
+
+    // const input = require("fs").readFileSync("/dev/stdin").toString().trim().toUpperCase().split("");
+    const alphabet_obj = {}
+
+    input.forEach(value => {
+        alphabet_obj[value] = alphabet_obj[value]? alphabet_obj[value] + 1 : 1
+    })
+    const alphabet_list = Object.entries(alphabet_obj);
+    alphabet_list.sort((a, b) => { return b[1] - a[1]})
+    if (alphabet_list.length ===1 ) console.log(alphabet_list[0][0])
+    else if (alphabet_list[0][1] === alphabet_list[1][1]) console.log("?")
+    else console.log(alphabet_list[0][0])
+}
+
 // Que1("9")
 // Que2(['25', '10987654321'])
 // Que3('baekjoon')
-Que4([2,'3 ABC', '5 /HTP'])
+// Que4([2,'3 ABC', '5 /HTP'])
+Que5('a')
