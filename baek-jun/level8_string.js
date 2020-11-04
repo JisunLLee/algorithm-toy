@@ -226,7 +226,7 @@ function Que5(input) {
     input = input.trim().toUpperCase()
     input = input.split("")
 
-    // 어이없음.... 인풋에 .toUpperCase().split(""); 한번에 넣어주면 런타임 에러 안뜨고
+    // .... 인풋이.... const 였다는 사실을 잊지마라.. .toUpperCase().split(""); 한번에 넣어주면 런타임 에러 안뜨고
     // input = input.trim().toUpperCase()
     // input = input.split("") 요렇게 하면 런타임 에러 뜬다...
 
@@ -244,8 +244,278 @@ function Que5(input) {
     else console.log(alphabet_list[0][0])
 }
 
+function Que6(input) {
+
+    /**
+     * 단어의 개수 (1152번)
+
+     문제
+     영어 대소문자와 띄어쓰기만으로 이루어진 문자열이 주어진다. 이 문자열에는 몇 개의 단어가 있을까? 이를 구하는 프로그램을 작성하시오.
+     단, 한 단어가 여러 번 등장하면 등장한 횟수만큼 모두 세어야 한다.
+
+     입력
+     첫 줄에 영어 대소문자와 띄어쓰기로 이루어진 문자열이 주어진다.
+     이 문자열의 길이는 1,000,000을 넘지 않는다. 단어는 띄어쓰기 한 개로 구분되며,
+     공백이 연속해서 나오는 경우는 없다. 또한 문자열의 앞과 뒤에는 공백이 있을 수도 있다.
+
+     출력
+     첫째 줄에 단어의 개수를 출력한다.
+
+     예제1
+     input The Curious Case of Benjamin Button
+     output 6
+
+     예제2
+     input  Mazatneunde Wae Teullyeoyo
+     output 3
+
+     예제3
+     input Teullinika Teullyeotzi
+     output 2
+
+     * */
+
+    // const list = input.split(" ")
+    // const input = require("fs").readFileSync("/dev/stdin").toString().trim().split(" ")
+
+    //첫번째 답
+    // const answer = input.filter(function(item) {
+    //     return item !== null && item !== undefined && item !== '';
+    // });
+    // console.log(answer.length)
+
+    // 두번째 답
+    // if(!input[0]) input.shift()
+    // if(!input[input.length-1]) input.pop()
+    // console.log(input.length)
+
+    // 세번째 답
+    // 삼항 조건 연산자 "?" 사용. "?" 앞의 조건이 true 면 "?" 뒤가 실행 되고, "?" 앞의 조건이 false 면 ":" 뒤가 실행된다.
+    input[0] === '' ? console.log(0) : console.log(input.length)
+
+
+}
+
+function Que7(input) {
+    /**
+     * 상수 (2908번)
+     *
+     * 문제
+     상근이의 동생 상수는 수학을 정말 못한다. 상수는 숫자를 읽는데 문제가 있다.
+     이렇게 수학을 못하는 상수를 위해서 상근이는 수의 크기를 비교하는 문제를 내주었다.
+     상근이는 세 자리 수 두 개를 칠판에 써주었다. 그 다음에 크기가 큰 수를 말해보라고 했다.
+
+     상수는 수를 다른 사람과 다르게 거꾸로 읽는다.
+     예를 들어, 734와 893을 칠판에 적었다면, 상수는 이 수를 437과 398로 읽는다.
+     따라서, 상수는 두 수중 큰 수인 437을 큰 수라고 말할 것이다.
+
+     두 수가 주어졌을 때, 상수의 대답을 출력하는 프로그램을 작성하시오.
+
+     입력
+     첫째 줄에 상근이가 칠판에 적은 두 수 A와 B가 주어진다. 두 수는 같지 않은 세 자리 수이며, 0이 포함되어 있지 않다.
+
+     출력
+     첫째 줄에 상수의 대답을 출력한다.
+
+     예제
+     input 734 893
+     output 437
+     **/
+    // const input = require("fs").readFileSync("/dev/stdin").toString().trim().split(" ")
+
+    // 첫번째 답변
+    // let backwards_array = [];
+    // input.map(value => {
+    //     let backwards = ""
+    //     const data = value.split("")
+    //     for(let i = data.length; i >= 1; i--){
+    //         backwards = backwards + data[i-1]
+    //     }
+    //     backwards_array.push(Number(backwards))
+    // })
+    // console.log(Math.max.apply(null, backwards_array))
+
+    // 두번째 답변 신기하게 이게 더 오래 걸림
+    let backwards = []
+    input.map(value => {
+        backwards.push(Number(value.split('').reverse().join('')))
+    })
+    console.log(Math.max.apply(null, backwards))
+}
+
+function Que8(input) {
+    /**
+     * 다이얼 (5622번)
+     *
+     * 문제
+     상근이의 할머니는 아래 그림과 같이 오래된 다이얼 전화기를 사용한다.
+
+     전화를 걸고 싶은 번호가 있다면, 숫자를 하나를 누른 다음에 금속 핀이 있는 곳 까지 시계방향으로 돌려야 한다.
+     숫자를 하나 누르면 다이얼이 처음 위치로 돌아가고, 다음 숫자를 누르려면 다이얼을 처음 위치에서 다시 돌려야 한다.
+
+     숫자 1을 걸려면 총 2초가 필요하다. 1보다 큰 수를 거는데 걸리는 시간은 이보다 더 걸리며, 한 칸 옆에 있는 숫자를 걸기 위해선 1초씩 더 걸린다.
+
+     상근이의 할머니는 전화 번호를 각 숫자에 해당하는 문자로 외운다. 즉, 어떤 단어를 걸 때, 각 알파벳에 해당하는 숫자를 걸면 된다.
+     예를 들어, UNUCIC는 868242와 같다.
+
+     할머니가 외운 단어가 주어졌을 때, 이 전화를 걸기 위해서 필요한 시간을 구하는 프로그램을 작성하시오.
+
+     입력
+     첫째 줄에 알파벳 대문자로 이루어진 단어가 주어진다. 단어는 2글자~15글자로 이루어져 있다.
+
+     출력
+     첫째 줄에 다이얼을 걸기 위해서 필요한 시간을 출력한다.
+
+     예제
+     input UNUCIC
+     output 36
+     **/
+
+    // trim() 을 꼭!! 걸어라! 아님 input.pop() 이라도.
+
+
+    //첫번째 답
+    // // const input = require("fs").readFileSyncz("/dev/stdin").trim().toString().split("");
+    // const dials = {
+    //     1 : 1,
+    //     A : 2,
+    //     B : 2,
+    //     C : 2,
+    //     D : 3,
+    //     E : 3,
+    //     F : 3,
+    //     G : 4,
+    //     H : 4,
+    //     I : 4,
+    //     J : 5,
+    //     K : 5,
+    //     L : 5,
+    //     M : 6,
+    //     N : 6,
+    //     O : 6,
+    //     P : 7,
+    //     Q : 7,
+    //     R : 7,
+    //     S : 7,
+    //     T : 8,
+    //     U : 8,
+    //     V : 8,
+    //     W : 9,
+    //     X : 9,
+    //     Y : 9,
+    //     Z : 9
+    // }
+    // let result = 0
+    // input.map(value => {
+    //     result = result + (dials[value] + 1)
+    // })
+    //
+    // console.log(result)
+
+    // 두번째 답 <- 런타임에러로 제출 실패. 그러나 답은 나옴.
+    // const input = require("fs").readFileSyncz("/dev/stdin").trim().toString();
+    const dial = [3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10]
+    let answer = 0;
+
+    for (let i = 0; i < input.length; i++) {
+        answer += dial[input.charCodeAt(i)-65]
+    }
+    console.log(answer)
+}
+
+function Que9(input) {
+    /**
+     * 크로아티아 알파 (2941번)
+     *
+     * 문제
+     크로아티아 알파벳	변경
+     č	            c=
+     ć	            c-
+     dž	            dz=
+     đ	            d-
+     lj	            lj
+     nj	            nj
+     š	            s=
+     ž	            z=
+     예를 들어, ljes=njak은 크로아티아 알파벳 6개(lj, e, š, nj, a, k)로 이루어져 있다.
+     단어가 주어졌을 때, 몇 개의 크로아티아 알파벳으로 이루어져 있는지 출력한다.
+
+     dž는 무조건 하나의 알파벳으로 쓰이고, d와 ž가 분리된 것으로 보지 않는다. lj와 nj도 마찬가지이다.
+     위 목록에 없는 알파벳은 한 글자씩 센다.
+
+     입력
+     첫째 줄에 최대 100글자의 단어가 주어진다. 알파벳 소문자와 '-', '='로만 이루어져 있다.
+     단어는 크로아티아 알파벳으로 이루어져 있다. 문제 설명의 표에 나와있는 알파벳은 변경된 형태로 입력된다.
+
+     출력
+     입력으로 주어진 단어가 몇 개의 크로아티아 알파벳으로 이루어져 있는지 출력한다.
+
+     예제 1
+     input ljes=njak
+     output 6
+
+     예제 2
+     input ddz=z=
+     output 3
+
+     예제 3
+     input nljj
+     output 3
+
+     예제 4
+     input c=c=
+     output 2
+     **/
+    // const input = require("fs").readFileSync("/dev/stdin").toString().trim().split("");
+
+    // // 답 1 런타임에러.
+    // const croatia = [
+    //     'c=','c-','dz=','d-','lj','nj','s=','z='
+    //     ]
+    // let count = 0;
+    //
+    // input.map((value, index) => {
+    //     const compare = value + input[index+1]
+    //     if (compare === croatia[0]
+    //         || compare === croatia[1]
+    //         || compare === croatia[2]
+    //         || compare === croatia[3]
+    //         || compare === croatia[4]
+    //         || compare === croatia[5]
+    //         || compare === croatia[6]
+    //         || compare === croatia[7]
+    //     ) count = count
+    //     else if (compare === 'dz') {
+    //         if ( compare+input[index+2] === '=')
+    //         count --
+    //     }
+    //     else count++
+    // })
+    // console.log(count)
+
+    // 답 2
+    const regex = /c\=|c\-|dz\=|d\-|lj|nj|s\=|z\=/g;
+    const result = input.replace(regex, ' ')
+    console.log(result.length)
+
+}
+
 // Que1("9")
 // Que2(['25', '10987654321'])
 // Que3('baekjoon')
 // Que4([2,'3 ABC', '5 /HTP'])
-Que5('a')
+// Que5('a')
+// Que6(["", "The", "Curious", "Case", "sd", ""])
+// Que6([""])
+// Que7(["993", "893"])
+// Que8('UNUCIC')
+// Que8(['U','N','U','C','I','C'])
+// Que8(['A','K'])
+// Que8('UUU')
+// Que8('UNUCIC')
+// Que8(['A','B','C','B'])
+// Que9(['l','j','e','s','n','j','a','k'])
+// Que9(['c','='])
+// Que9(['l','j','e','s','=','n','j','a','k'])
+// Que9(['d','d','z','=','z','='])
+Que9('ddz=z=')
