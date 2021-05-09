@@ -22,41 +22,29 @@
 
  */
 
-function solution(numbers){
-    let array = []
-
-    // let idx = 0
-    const length = numbers.length
-    // numbers.map((value, idx) => {
-    //     let num = [];
-    //     for (let count = 0; count < length; count++){
-    //         num.push(numbers[count-idx]);
-    //     }
-    //     return array.push(num.join(''))
-    // })
-
-    for (value of numbers){
-
-    }
-
-        //0,1,2,3
-        //1,2,3,0
-        //2,3,0,1
-        //3,0,1,2
-    //
-    // array.push(numbers[0].toString() + numbers[1].toString() + numbers[2].toString())
-    // array.push(numbers[1].toString() + numbers[2].toString() + numbers[0].toString())
-    // array.push(numbers[2].toString() + numbers[0].toString() + numbers[1].toString())
-
-
-    // num = [6102, 6210, 1062, 1026, 2610, 2106]
-    // sort > num(0);
-
-    return array;
+function solution(numbers) {
+    // const answer = numbers.sort((a,b) => (b.toString() + a.toString()) - (a.toString() + b.toString()))
+    // console.log(answer.join("") == 0 ? "0" : answer.join(""))
+}
+    function test(numbers) {
+    console.log('test')
+    // console.log(numbers.sort()) // 3, 30, 34, 5, 9
+    // console.log(numbers.sort((a,b) => (b + a)))  // 3, 30, 5, 34, 9
+    // console.log(numbers.sort((a,b) => (b.toString() + a.toString())))  // 3, 30, 5, 34, 9
+    // console.log(numbers.sort((a,b) => (a.toString() - b.toString())))  // 3, 5, 9, 30, 34
+    // console.log(numbers.sort((a,b) => (b + a) - (a + b)) )  // 3, 30, 5, 34, 9
+    // console.log(numbers.sort((a,b) => (b.toString() + a.toString()) - (a.toString() + b.toString())) )  //9, 5, 34, 3, 30
+    // console.log(numbers.sort((a,b) => (b - a)))  // 34, 30, 9, 5, 3
+    // console.log('reverse')
+    // console.log(numbers.reverse())
+    // console.log(numbers.reverse((a,b) => (a-b)))
 }
 
 
-const numbers = [6,10,2]
+// const numbers = [6,10,2]
+const numbers = [3, 30, 5, 34, 9]
+// solution(numbers)
+test(numbers)
 // console.log(contents.indexOf(content));
 // console.time('solution');
 // console.log(solution(numbers));
