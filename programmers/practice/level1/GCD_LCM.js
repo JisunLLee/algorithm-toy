@@ -22,6 +22,11 @@ return  [1,10]
 **/
 
 function solution(n, m) {
-    var answer = [];
-    return answer;
+    //최대 공약수
+    const GCD = (a,b) => b ?  GCD(b, a % b) : a
+    //최소 공배수
+    const LCM = (a,b) => (a * b) / GCD(a,b)
+
+    return [GCD(n,m), LCM(n,m)];
 }
+console.log(solution(2,9))
