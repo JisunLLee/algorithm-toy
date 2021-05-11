@@ -38,24 +38,29 @@ reserve	[1]
 return  2
 */
 
-//if lost === reserve 값 빼기
-//for문 돌면서 reserve 값이랑 비교, 차이가 -1~1 이면 lost랑 reserve 값 빼기
-
 function solution(n, lost, reserve) {
 
+    // 옷 잃어버린 사람 복제본 (한벌 잃어버렸지만, 한벌 더 있을 수 있음)
     let noCloth = lost.slice()
+    // 옷 잃어버린 사람 중 두벌 있던 사람 색출. 
     lost.map((v,i)=> {
         if(reserve.find(value=> value === v)){
+            // 옷 잃어버린 사람 복제본에서 제외
             noCloth.splice(noCloth.indexOf(v),1)
+            // 여별 있는 사람에서 제외
             reserve.splice(reserve.indexOf(v),1)
         }
     })
+    // 옷 없는 사람 복제본
     let noCloth2 = noCloth.slice()
     noCloth.map((v,i)=> {
         for (let j = 0; j < reserve.length; j++){
             let a = reserve[j] - v
+            // 여벌과 한 사이즈만 차이 나는 옷 찾기
             if ( -1 === reserve[j] - v || reserve[j] - v  === 1) {
+                // 진짜 옷 없는 사람 목록에서 제외 (옷 없는 사람 복제본)
                 noCloth2.splice(noCloth2.indexOf(v),1);
+                // 여벌 있는 사람 제외
                 reserve.splice(j,1);
             }
         }
