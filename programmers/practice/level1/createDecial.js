@@ -19,9 +19,11 @@ result  4
 
 */
 
-// 01 고정 뒤에 쭉
-// 02 고정 뒤에 쭉
-function solution(nums) {
+// 01 재귀함수를 사용하면 Uncaught RangeError: Maximum call stack size exceeded 가 발생한다.
+// 스텍에 재귀함수 호출이 너무 많이 쌓여서 생긴 일.
+// 알고리즘을 재귀 말고 다른 것으로 바꾸자.
+function solution0(nums) {
+    const plus = []
     const answers = []
 
     const getPlus = (i, j, k) => {
@@ -30,17 +32,40 @@ function solution(nums) {
         nums[i+1] ? getPlus(i+1,i+2,i+3) : 0
     }
     
+    const isPrime = n => {
+        for (let i = 2; i*i <= n; i++){
+            if(n%i === 0) {
+                return false
+            }
+        }
+        answers.push(n)
+        return true
+    }
     getPlus(0,1,2)
-
+    
     return answers.length
 }
-const isPrime = n => {
+
+function solution(nums) {
+   const answers = []; 
+   for (let i = 0; i < nums.length; i ++) {
+        for (let j = i+1; j < nums.length; j++) {
+            for (let k = j+1; k < nums.length; k++) {
+                isPrime(nums[i] + nums[j] + nums[k]) ? answers.push(nums[i] + nums[j] + nums[k]) : 0
+            }
+        }
+   }
+   return answers.length
+}
+
+
+function isPrime(n) {
     for (let i = 2; i*i <= n; i++){
         if(n%i === 0) {
             return false
         }
     }
-    answers.push(n)
+    return true
 }
-
 console.log(solution([1,2,7,6,4]))
+// console.log(solution([1,2,7,6,4,49,1000,2,7,6,4,49,2,7,6,4,49,2,7,6,4,49,2,7,6,4,49,2,7,6,4,49,2,7,5,4,3]))
