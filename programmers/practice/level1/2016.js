@@ -91,4 +91,9 @@ function solution(a, b){
     const answers = new Date(`2016, ${a}, ${b}`) + '';
     return answers.split(' ')[0].toUpperCase()
 }
-console.log(solution(3,2))
+
+function solution2(a, b){
+    return new Date(`2016-${a}-${b}`).toString().split(' ')[0].toUpperCase()
+}
+
+console.log(solution2(3,2))
