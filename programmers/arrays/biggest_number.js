@@ -42,10 +42,18 @@ function solution(numbers) {
 
 
 // const numbers = [6,10,2]
-const numbers = [3, 30, 5, 34, 9]
-// solution(numbers)
-test(numbers)
+// const numbers = [3, 30, 5, 34, 9]
+// // solution(numbers)
+// test(numbers)
 // console.log(contents.indexOf(content));
 // console.time('solution');
 // console.log(solution(numbers));
 // console.timeEnd("solution");
+
+function solution2(numbers) {
+    const answer = numbers.sort((a,b)=> (b.toString() + a.toString()) - (a.toString() + b.toString()))
+        return answer.reduce((acc, crr)=>( acc === 0 ? acc = crr : acc = acc + "" + crr),0)+""
+    }
+    // const input = [3, 30, 34, 5, 9, 42]
+    const input = [979, 97, 978, 81, 818, 817]
+console.log(solution2(input))

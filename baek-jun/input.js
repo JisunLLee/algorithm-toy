@@ -20,13 +20,8 @@ function inputWithSpacing() {
 
 // 인풋 값이 줄바꿈으로 들어올 때
 function inputWithEnter() {
-
-    const input = require("fs").readFileSync("/dev/stdin").toString().split("\n");
-    const input2 = require("fs").readFileSync("/dev/stdin").trim().split("\n");
-    const input3 = require("fs").readFileSync("/dev/stdin").toString().trim().split("\n");
-    // 사용 시
-    // String : input[0]
-    // Number :  parseInt(input[0]); || Number(input[0])
+    const fs = require("fs")
+    const [input1 , input2] = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
 }
 
 // 리드라인으로 줄바꿈 값 받기
